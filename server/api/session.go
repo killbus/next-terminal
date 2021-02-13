@@ -212,12 +212,14 @@ func SessionCreateEndpoint(c echo.Context) error {
 		}
 
 		if credential.Type == constant.Custom {
-			session.Username = credential.Username
 			session.Password = credential.Password
 		} else {
-			session.Username = credential.Username
 			session.PrivateKey = credential.PrivateKey
 			session.Passphrase = credential.Passphrase
+		}
+
+		if session.Username == "-" {
+			session.Username = credential.Username
 		}
 	}
 

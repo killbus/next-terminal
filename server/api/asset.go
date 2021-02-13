@@ -172,7 +172,9 @@ func AssetUpdateEndpoint(c echo.Context) error {
 
 	switch item.AccountType {
 	case "credential":
-		item.Username = "-"
+		if len(item.Username) == 0 {
+			item.Username = "-"
+		}
 		item.Password = "-"
 		item.PrivateKey = "-"
 		item.Passphrase = "-"

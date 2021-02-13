@@ -213,20 +213,26 @@ const AssetModal = function ({title, visible, handleOk, handleCancel, confirmLoa
 
                                 {
                                     accountType === 'credential' ?
-                                        <Form.Item label="授权凭证" name='credentialId'
-                                                   rules={[{required: true, message: '请选择授权凭证'}]}>
-                                            <Select onChange={() => null}>
-                                                {credentials.map(item => {
-                                                    return (
-                                                        <Option key={item.id} value={item.id}>
-                                                            <Tooltip placement="topLeft" title={item.name}>
-                                                                {item.name}
-                                                            </Tooltip>
-                                                        </Option>
-                                                    );
-                                                })}
-                                            </Select>
-                                        </Form.Item>
+                                        <>
+                                            <Form.Item label="授权账户" name='username'>
+                                                <Input placeholder="输入授权账户"/>
+                                            </Form.Item>
+
+                                            <Form.Item label="授权凭证" name='credentialId'
+                                                    rules={[{required: true, message: '请选择授权凭证'}]}>
+                                                <Select onChange={() => null}>
+                                                    {credentials.map(item => {
+                                                        return (
+                                                            <Option key={item.id} value={item.id}>
+                                                                <Tooltip placement="topLeft" title={item.name}>
+                                                                    {item.name}
+                                                                </Tooltip>
+                                                            </Option>
+                                                        );
+                                                    })}
+                                                </Select>
+                                            </Form.Item>
+                                        </>
                                         : null
                                 }
 
